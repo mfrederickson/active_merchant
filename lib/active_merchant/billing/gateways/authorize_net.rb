@@ -267,7 +267,8 @@ module ActiveMerchant #:nodoc:
         parameters[:amount] = amount(money) unless action == 'VOID'
 
         # Only activate the test_request when the :test option is passed in
-        parameters[:test_request] = @options[:test] ? 'TRUE' : 'FALSE'
+	# 5/6/13 mjf comment out so we can send live transactions to test server
+        # parameters[:test_request] = @options[:test] ? 'TRUE' : 'FALSE'
 
         url = test? ? self.test_url : self.live_url
         data = ssl_post url, post_data(action, parameters)
